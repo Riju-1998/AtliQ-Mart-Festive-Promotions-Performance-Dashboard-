@@ -1,0 +1,53 @@
+AtliQ Mart Festive Promotions Performance Dashboard (Power BI)
+Project Overview
+This project analyzes the performance of festive promotions run by AtliQ Mart, a retail giant with over 50 supermarkets in the southern region of India. The focus is on evaluating the promotional campaigns conducted during Diwali 2023 and Sankranti 2024 for AtliQ branded products. The goal of this analysis is to provide insights to the Sales Director, enabling data-driven decisions for future promotional campaigns by identifying the most and least effective promotions.
+
+Project Objectives
+Evaluate the effectiveness of promotions by comparing pre- and post-promotion sales.
+Calculate the Incremental Revenue (IR%) and Incremental Sold Units (ISU%) to determine promotional impact.
+Provide region-wise sales performance with a focus on the best-performing regions.
+Identify top and bottom products based on sales metrics, offering actionable insights for future promotions.
+DAX Calculations Used
+Baseline Revenue: Measures sales revenue before the promotion started.
+
+DAX
+Copy code
+Base Line Revenue = SUMX(fact_events, fact_events[Quantity Sold(before_promo)] * fact_events[Base Price])
+Incremental Revenue: Calculates the additional revenue generated due to the promotion.
+
+DAX
+Copy code
+Incremental Revenue = SUMX(fact_events, (fact_events[Quantity Sold(after_promo)] - fact_events[Quantity Sold(before_promo)]) * fact_events[Base Price])
+IR% (Incremental Revenue Percentage): Represents the percentage growth in revenue during the promotional period.
+
+DAX
+Copy code
+IR% = DIVIDE([Incremental Revenue], [Revenue before promo], 0) * 100
+ISU% (Incremental Sold Unit Percentage): Indicates the percentage increase in units sold during the promotional period.
+
+DAX
+Copy code
+ISU% = DIVIDE([Incremental Sold Unit], [Total Quantity before promo], 0) * 100
+Revenue Before and After Promotion: Breakdown of revenue pre- and post-promotion.
+
+DAX
+Copy code
+Revenue Before Promo = SUMX(fact_events, fact_events[Quantity Sold(before_promo)] * fact_events[Base Price])
+Revenue After Promo = SUMX(fact_events, fact_events[Quantity Sold(after_promo)] * fact_events[Base Price])
+Key Insights & Findings
+Bengaluru Leads in Sales Performance: Among all regions, Bengaluru contributed the most to total sales and revenue growth, making it the top-performing city during the festive period.
+
+Top-Performing Product: The AtliQ Waterproof Immersion Rod emerged as the best-performing product based on IR% and ISU%, with significant sales and revenue growth.
+
+Bottom-Performing Product: The AtliQ Fusion Container Set of 3 was the least effective in terms of both revenue and unit sales growth, indicating the need for better promotional strategies or product adjustments.
+
+Overall Sales Growth: Significant sales and revenue increases were observed across all stores, driven by the success of the festive campaigns, with insights into product-level and region-level performance.
+
+Technologies Used
+Power BI: For creating interactive dashboards and data visualization.
+DAX (Data Analysis Expressions): For calculating custom metrics such as Incremental Revenue, ISU%, and IR%.
+Dashboard Highlights
+Total Sales Performance Overview: Visualizing regional contributions, with Bengaluru as the standout performer.
+IR% and ISU% Breakdown: Analyzing the effectiveness of promotions at the product level.
+Best & Worst Performing Promotions: Highlighting top and bottom products based on key sales metrics.
+Sales and Revenue Growth by Region: Assessing how different regions contributed to the overall sales uplift during the festive period.
